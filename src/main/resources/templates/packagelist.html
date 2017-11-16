@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>List of Package</title>
+<link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body class="background">
+	<h2 align="center"><font color="696969">List Of Packages</font></h2><br/>
+	<a th:href="@{/addpack}">
+    	<button type="button" class="button">Add Package</button><br/></a><br/>
+<form action="#" th:action="@{/findpackage}"  method="post">
+<table>
+			<tr><th>Package ID</th>
+				<th>Package Name</th>
+				<th>Valid From</th>
+				<th>Validity(in days)</th>
+				<th>Expires On</th>
+			</tr>
+			<tr th:each="packages : ${list}">
+				<td th:text="${packages.packageId}"></td>
+				<td th:text="${packages.packageName}"></td>
+				<td th:text="${packages.validFrom}"></td>
+				<td th:text="${packages.validTill}"></td>
+				<td th:text="${packages.expiresOn}"></td>
+				<td><a th:href="@{/deletepackage/{id}(id=${packages.id})}">
+                <button type="button" class="button">DELETE</button></a> </td>
+                <td><a th:href="@{/updatepackage/{id}(id=${packages.id})}">
+                <button type="button" class="button">UPDATE</button></a> </td>
+				<td><a th:href="@{/topic/addtopic/{id}(id=${packages.id})}">
+                <button type="button" class="button">ADD TOPIC</button></a></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

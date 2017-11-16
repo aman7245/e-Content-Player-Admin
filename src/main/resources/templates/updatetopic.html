@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Update Topic</title>
+<link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body class="background">
+	<h2 align="center"><font color="696969">Update Topic</font></h2><br/>
+	
+<form action="/topic/updatetopic" method="POST" th:object="${topicvo}" >
+				<input type="hidden" th:field="*{pId}" />
+				<input type="hidden" th:field="*{topicId}" />
+	<table>
+			
+			<tr>
+				<td>Package Name:</td>
+				<td><input type="text" th:field="*{packageName}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>Package ID:</td>
+				<td><input type="text" th:field="*{packageId}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>Topic Name<sup>*</sup>:</td>
+				<td><input type="text" th:field="*{topicName}" required="required"/></td>
+			</tr>
+			<tr>
+				<td><button type="reset" class="button">CLEAR</button></td>
+				<td><button type="submit" class="button">UPDATE</button></td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

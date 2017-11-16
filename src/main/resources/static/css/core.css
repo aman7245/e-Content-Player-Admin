@@ -1,0 +1,64 @@
+label{ 
+     display:inline-block; 
+     width:110px;
+     font-size: 1.2em; 
+ } 
+ 
+ div { 
+     border-radius: 5px; 
+     background-color: powderblue; 
+     
+ } 
+ 
+ .center {
+ 	padding: 200px 0;
+    text-align: center;
+}
+
+.background {
+	background-color: powderblue;
+}
+
+.btn {
+    color: black; 
+    padding: 12px 30px; 
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 35px;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #808080;
+  border: none;
+  border-radius: 15px;
+}
+
+.button:hover {background-color: #008080}
+
+.button:active {
+  background-color: #008080;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

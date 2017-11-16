@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Add Package</title>
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet"></link>
+      <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+<!--       Javascript -->
+      <script>
+      var datefield=document.createElement("input")
+      datefield.setAttribute("type", "date")
+      if(datefield.type!="date"){
+          $(function() {
+             $( "#validfrom" ).datepicker();
+          });
+      }
+       </script> 
+   <link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen" />
+	
+</head>
+<body class="background">
+<div >
+	<h2 align="center"><font color="696969">Add Package Details</font></h2>
+<form action="#" th:action="@{/addpack}" th:object="${packages}" method="post">
+	<table >
+			
+			<tr>
+				<td>Package ID:</td>
+				<td><input type="text" th:field="*{packageId}" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Package Name<sup>*</sup>:</td>
+				<td><input type="text" th:field="*{packageName}" required="required"/></td>
+			</tr>
+			<tr>
+				<td>Valid From<sup>*</sup>:</td>
+				<td><input type="date" th:field="*{validFrom}" id="validfrom" value="${cForm.validForm}"/></td>
+			</tr>
+			<tr>
+				<td>Validity(in days)<sup>*</sup>:</td>
+				<td><input type="text" th:field="*{validTill}" required="required"/></td>
+			</tr>
+			<tr>
+				<td><button class="button" type="reset">Clear</button></td>
+				<td><a th:href="@{/findpackage}"><button class="button" type="submit">Save</button></a></td>
+			</tr>
+		</table>
+	</form></div>
+</body>
+</html>

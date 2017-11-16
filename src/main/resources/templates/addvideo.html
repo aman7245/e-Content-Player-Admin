@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Upload Video</title>
+<link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body class="background">
+
+<h2 align="center"><font color="696969">Upload Video</font></h2><br/>
+
+<form method="POST" action="/video/upload" th:object="${videovo}" enctype="multipart/form-data">
+				<input type="hidden" th:field="*{topicId}" />
+				<input type="hidden" th:field="*{videoId}" />
+	<table >
+		<tr>
+			<td>Topic Name:</td>
+			<td><input type="text" th:field="*{topicName}" readonly="readonly"/></td>
+		</tr>
+		<tr>
+    		<td>Video Name<sup>*</sup>:</td>
+    		<td><input type="text" th:field="*{videoName}" required="required"/></td>
+    	</tr>
+    	<tr>
+    		<td><input type="file"  name="file" /></td>
+   			<td><button type="submit" class="button">Save</button></td>
+    	</tr>
+    </table>
+</form>
+<br/><h3 align="center"><font color="696969">List of Videos</font></h3>
+<form action="/video/findvideo">
+	<table>
+		<tr><th>Video Name</th>	
+		</tr>
+		<tr th:each="videos : ${videoList}">
+			<td th:text="${videos.videoName}"></td>
+			<td><a th:href="@{/video/deletevideo/{videoId}(videoId=${videos.videoId})}">
+                <button type="button" class="button">DELETE</button></a></td>
+            <td><a th:href="@{/video/updatevideo/{videoId}(videoId=${videos.videoId})}">
+                <button type="button" class="button">UPDATE</button></a></td>
+		</tr>
+	</table>
+</form>
+
+</body>
+</html>

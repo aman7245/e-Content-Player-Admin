@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Add Topic</title>
+<link href="../static/css/core.css"
+          th:href="@{/css/core.css}"
+          rel="stylesheet" media="screen" />
+</head>
+<body class="background">
+<div >
+	<h2 align="center"><font color="696969">Add Details of Topic</font></h2><br/>
+<form action="/topic/addnewtopic" method="POST" th:object="${topicvo}" >
+				<input type="hidden" th:field="*{pId}" />
+	<table>
+			
+			<tr>
+				<td>Package Name:</td>
+				<td><input type="text" th:field="*{packageName}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>Package ID:</td>
+				<td><input type="text" th:field="*{packageId}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>Topic Name<sup>*</sup>:</td>
+				<td><input type="text" th:field="*{topicName}" required="required"/></td>
+			</tr>
+			<tr>
+				<td><button type="reset" class="button">Clear</button></td>
+				<td><button type="submit" class="button">Save</button></td>
+			</tr>
+		</table>
+
+	</form>
+	<br/><h3 align="center"><font color="696969">List of Topics</font></h3>
+		<form action="/topic/findtopic">
+		<table>
+			<tr><th>Topic Name</th>	
+			</tr>
+			<tr th:each="topics : ${topicList}">
+				<td th:text="${topics.topicName}"></td>
+				
+				<td><a th:href="@{/topic/deletetopic/{topicId}(topicId=${topics.topicId})}">
+                <button type="button" class="button">DELETE</button></a></td>
+                
+                <td><a th:href="@{/topic/updatetopic/{topicId}(topicId=${topics.topicId})}">
+                <button type="button" class="button">UPDATE</button></a></td>
+				
+				<td><a th:href="@{/video/addvideo/{topicId}(topicId=${topics.topicId})}">
+                <button type="button" class="button">Add Video</button></a></td>
+			</tr>
+		</table>
+		</form>
+</div>
+</body>
+</html>
